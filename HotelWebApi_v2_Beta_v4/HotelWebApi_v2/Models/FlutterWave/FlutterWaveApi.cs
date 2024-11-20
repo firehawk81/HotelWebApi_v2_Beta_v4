@@ -20,40 +20,45 @@ namespace HotelWebApi_v2.Models.Models
             _serviceKey = ServiceKey;
         }
 
-        //private async Task<TransactionReponse> MakePayment(TransactRequest request)
-        //{
+        private async Task<TransactionReponse> MakePayment(TransactRequest request)
+        {
 
-        //    string endpoint = "/v3/payments";
-        //    using (var client = new HttpClient()) {
-        //        client.BaseAddress = new Uri("https://api.flutterwave.com");
-        //        client.DefaultRequestHeaders.Accept.Clear();
-        //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        //        if (!string.IsNullOrWhiteSpace(_serviceKey))
-        //            // client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _serviceKey);
-        //            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _serviceKey);
+            string endpoint = "/v3/payments";
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://api.flutterwave.com");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                if (!string.IsNullOrWhiteSpace(_serviceKey))
+                    // client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _serviceKey);
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _serviceKey);
 
-        //        var payload = JsonConvert.SerializeObject(request);
-        //        var httpContent = new StringContent(payload, Encoding.UTF8, "application/json");
+                var payload = JsonConvert.SerializeObject(request);
+                var httpContent = new StringContent(payload, Encoding.UTF8, "application/json");
 
-        //        var response = await client.PostAsync(endpoint, httpContent);
-        //        if (response.IsSuccessStatusCode) {
-        //            string content = await response.Content.ReadAsStringAsync();
-        //            TransactionReponse resp = JsonConvert.DeserializeObject<TransactionReponse>(content);
-                    
-        //            if (resp.status == "successful") {
+                var response = await client.PostAsync(endpoint, httpContent);
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    TransactionReponse resp = JsonConvert.DeserializeObject<TransactionReponse>(content);
 
-        //                // Insert Customers information here 
-        //                var submitData = "{name: John, Phone: 07032499237, email: info@9appsoft.com}";
-        //                // Insert Customers information here
+                    if (resp.status == "successful")
+                    {
 
-        //            }
-        //            return resp;
-        //        } else {
-        //            string content = await response.Content.ReadAsStringAsync();
-        //            return JsonConvert.DeserializeObject<TransactionReponse>(content);
-        //        }
-        //    }
-        //}
+                        // Insert Customers information here 
+                        var submitData = "{name: John, Phone: 07032499237, email: info@9appsoft.com}";
+                        // Insert Customers information here
+
+                    }
+                    return resp;
+                }
+                else
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<TransactionReponse>(content);
+                }
+            }
+        }
 
         public async Task<TransactionReponse> VerifyPayment(string transactiondId)
         {

@@ -70,6 +70,11 @@ c:\users\admin\onedrive\documents\visual studio 2017\Projects\HotelWebApi_v2\Hot
 c:\users\admin\onedrive\documents\visual studio 2017\Projects\HotelWebApi_v2\HotelWebApi_v2\bin\Microsoft.AI.Web.xml
 c:\users\admin\onedrive\documents\visual studio 2017\Projects\HotelWebApi_v2\HotelWebApi_v2\obj\Debug\HotelWebApi_v2.dll
 c:\users\admin\onedrive\documents\visual studio 2017\Projects\HotelWebApi_v2\HotelWebApi_v2\obj\Debug\HotelWebApi_v2.pdb
+C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\VBCSCompiler.exe
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\ApplicationInsights.config
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\csc.exe
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\csc.exe.config
@@ -77,13 +82,9 @@ C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelW
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\csi.exe
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\csi.rsp
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\Microsoft.CodeAnalysis.dll
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\Microsoft.VisualBasic.Core.targets
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\System.AppContext.dll
@@ -95,7 +96,6 @@ C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelW
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\vbc.exe
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\vbc.exe.config
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\vbc.rsp
-C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\VBCSCompiler.exe
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\HotelWebApi_v2.dll.config
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\HotelWebApi_v2.dll
@@ -154,6 +154,5 @@ C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelW
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\Microsoft.AI.Web.xml
-C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\obj\Debug\HotelWebApi_v2.csprojResolveAssemblyReference.cache
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\obj\Debug\HotelWebApi_v2.dll
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomHotel\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\obj\Debug\HotelWebApi_v2.pdb

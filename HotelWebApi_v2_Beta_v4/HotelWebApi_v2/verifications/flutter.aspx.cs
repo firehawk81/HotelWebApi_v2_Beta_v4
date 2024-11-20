@@ -17,13 +17,15 @@ namespace HotelWebApi_v2.verifications
         protected async void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack) {
-                string _refNo = Request.QueryString["reference"];
+                string _status = Request.QueryString["status"];
+                string _tx_ref = Request.QueryString["tx_ref"];
+                string _transaction_id = Request.QueryString["transaction_id"];
 
                 TransactionReponse verr = new TransactionReponse();
 
-                verr = await verifyPay.VerifyPayment(_refNo);
-                if (verr.status == "true") {
-                    pRefNo.InnerText = _refNo.ToUpper();
+                verr = await verifyPay.VerifyPayment(_transaction_id);      // status=successful&tx_ref=txref-DI0NzMx13&transaction_id=8206200
+                if (verr.status == "successful") {
+                    pRefNo.InnerText = _transaction_id.ToUpper();
                     //Response.Redirect("www.google.com",false);
                 }
             }
