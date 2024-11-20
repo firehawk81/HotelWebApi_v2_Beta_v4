@@ -24,6 +24,7 @@ namespace HotelWebApi_v2.verifications
                 if (verr.status == "true") {
                     pRefNo.InnerText = _refNo.ToUpper();
                     //Response.Redirect("www.google.com",false);
+
                     
                 }
             }
