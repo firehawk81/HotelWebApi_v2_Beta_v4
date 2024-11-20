@@ -285,6 +285,13 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="verifications\budpay.aspx.cs">
+      <DependentUpon>budpay.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="verifications\budpay.aspx.designer.cs">
+      <DependentUpon>budpay.aspx</DependentUpon>
+    </Compile>
     <Compile Include="verifications\flutter.aspx.cs">
       <DependentUpon>flutter.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -721,6 +728,7 @@
     </Content>
     <Content Include="tables\datatables.html" />
     <Content Include="tables\tables.html" />
+    <Content Include="verifications\budpay.aspx" />
     <Content Include="verifications\flutter.aspx" />
     <Content Include="verifications\paystack.aspx" />
     <Content Include="widgets.html" />
