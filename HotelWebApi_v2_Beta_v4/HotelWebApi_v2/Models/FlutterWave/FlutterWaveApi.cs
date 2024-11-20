@@ -22,7 +22,6 @@ namespace HotelWebApi_v2.Models.Models
 
         private async Task<TransactionReponse> MakePayment(TransactRequest request)
         {
-
             string endpoint = "/v3/payments";
             using (var client = new HttpClient())
             {
