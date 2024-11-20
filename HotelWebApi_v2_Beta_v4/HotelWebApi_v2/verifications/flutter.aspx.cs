@@ -13,7 +13,7 @@ namespace HotelWebApi_v2.verifications
     {
         
         //FlutterWaveApi verifyPay = new FlutterWaveApi("FLWSECK_TEST-b9eb6f15b65178a1b95243f6cea2d344-X");
-        FlutterWaveApi verifyPay = new FlutterWaveApi("sk_test_rvuppkyqtiwydtm9581qt8rnpyqre8wsonihppg"); //BudPay
+        FlutterWaveApi verifyPay = new FlutterWaveApi("FLWSECK_TEST-b9eb6f15b65178a1b95243f6cea2d344-X"); //BudPay
         protected async void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack) {
