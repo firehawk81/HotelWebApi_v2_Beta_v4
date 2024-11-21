@@ -63,7 +63,7 @@ namespace HotelWebApi_v2.Models.Models
         {
             //https://api.budpay.com/api/v2/transaction/verify/reference
             
-            string endpoint = $"/v3/transactions/:"+ transactiondId + "/verify";
+            string endpoint = $"/v3/transactions/"+ transactiondId + "/verify";
             using (var client = new HttpClient()) {
                 client.BaseAddress = new Uri("https://api.flutterwave.com");
                 client.DefaultRequestHeaders.Accept.Clear();

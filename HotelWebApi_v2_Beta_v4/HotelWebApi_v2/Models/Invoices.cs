@@ -141,8 +141,8 @@ namespace HotelWebApi_v2.Models
         Invoices invoice;
         try {
             using (SqlConnection con = new SqlConnection()) {
-                con.ConnectionString = "Data Source =.\\MSSQLSERVER2012;Initial Catalog=Ibomwater_db;User ID=Ibom_user;Password=@Down1234#;Integrated Security=False";
-                                    // "Data Source=.\\sqlexpress;Initial Catalog=appsoft;Integrated Security=True";
+                con.ConnectionString = "Data Source=.\\sqlexpress;Initial Catalog=appsoft;Integrated Security=True";
+                    // "Data Source =.\\MSSQLSERVER2012;Initial Catalog=Ibomwater_db;User ID=Ibom_user;Password=@Down1234#;Integrated Security=False";
                     using (SqlCommand cmd = new SqlCommand()) {
                     cmd.Connection = con;
                     cmd.CommandText = "CustomersInvoicesLoadAll_sp";
