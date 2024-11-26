@@ -75,6 +75,7 @@ namespace HotelWebApi_v2.Models
             try {
                 using (SqlConnection con = new SqlConnection()) {
                     con.ConnectionString = "Data Source =.\\MSSQLSERVER2012;Initial Catalog=Ibomwater_db;User ID=Ibom_user;Password=@Down1234#;Integrated Security=False";
+                    //
                     //Properties.Settings.Default.ConnectionStr;
 
                     using (SqlCommand cmd = new SqlCommand()) {
@@ -102,8 +103,8 @@ namespace HotelWebApi_v2.Models
                                 room.CheckedIn = Convert.ToBoolean(reader["CheckedIn"]);
                                 room.Paid = Convert.ToBoolean(reader["Paid"]);
                                 room.Rate = Convert.ToDecimal(reader["Rate"]);
-                                if (room.CheckedIn) {
-                                    room.TotalAvailable += 1;
+                                if (room.Booked != true) {
+                                    room.TotalAvailable ++;
                                     lst.Add(room);
                                 }
                             }
