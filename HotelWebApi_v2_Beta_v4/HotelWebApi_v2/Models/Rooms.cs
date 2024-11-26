@@ -104,8 +104,8 @@ namespace HotelWebApi_v2.Models
                                 room.Paid = Convert.ToBoolean(reader["Paid"]);
                                 room.Rate = Convert.ToDecimal(reader["Rate"]);
                                 if (room.Booked != true) {
-                                    room.TotalAvailable ++;
                                     lst.Add(room);
+                                    room.TotalAvailable= lst.Count;
                                 }
                             }
                             return lst;

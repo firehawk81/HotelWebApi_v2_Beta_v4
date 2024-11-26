@@ -50,38 +50,40 @@
     <script src="../assets/js/jquery-3.7.1.min.js"></script>
 
     <script type="text/javascript">
-        $(document).ready(function () {
-            var _cardBody = $('#cards');
 
-            $('#pills-Hotel-sale-tab').click(function () {
+        $(document).ready(function () {
+        const theRoomType = 'deluxe';
+
+            var _cardBody = $('#cardBody');
+            $('#btn1').click(function () {
                 $.ajax({
                     contentType: 'GET',
-                    url: 'https://195.201.81.237/plesk-site-preview/iwr.9appsoft.com/api/DailySalesHotel',
+                    url: 'https://195.201.81.237/plesk-site-preview/iwr.9appsoft.com/api/CheckAvailability/'+theRoomType,
                     dataType: 'json',
                     success: function (data) {
                         _cardBody.empty();
                         $.each(data, function (key, val) {
-         var roomStatus = '<ul><li class="d-flex flex-row align-items-center justify-content-start">'
-            '<div class="cart_total_title">Check-In</div> <div id="subTotal" class="cart_total_price ml-auto">'+ val.AccountName +'</div>'
-        '</li>'
-        '<li class="d-flex flex-row align-items-center justify-content-start">'
-            '<div class="cart_total_title">Check-Out</div>'
-            '<div id="discount" class="cart_total_price ml-auto">'+val.AccountName+'</div>'
-        '</li>'
-        '<li class="d-flex flex-row align-items-center justify-content-start">'
-            '<div class="cart_total_title">Booking Date</div>'
-            '<div id="vat" class="cart_total_price ml-auto">'+val.AccountName+'</div>'
-        '</li>'
-        '</ul>'
-        + val.TransactDate + '</td><td>' + val.CheckInDate + ' / ' + val.CheckOutDate + '</td><td>' + val.Nights + '</td><td>' + val.Rooms + '</td><td>' + val.RefNo + '</td><td>' + val.UserFullName + '</td>' + '</td><td>' + val.Rate + '</td>' + '</td><td>' + val.Credit + '</td>';
-                            $('</ul>', { html: roomStatus })  // Append the name and other data
-                            .appendTo($('#cards'));
+
+                            //$(".cardBody").append('<li class="d-flex flex-row align-items-center justify-content-start">''<div class="cart_total_title">Check-In</div><div id="subTotal" class="cart_total_price ml-auto">'+ val.CheckIn +'</div>''</li>''<li class="d-flex flex-row align-items-center justify-content-start">''<div class="cart_total_title">Check-Out</div>''<div id="discount" class="cart_total_price ml-auto">'+val.CheckOut+'</div>''</li>''<li class="d-flex flex-row align-items-center justify-content-start">''<div class="cart_total_title">Room Name</div>''<div id="vat" class="cart_total_price ml-auto">'+'Room '+val.RoomName+'</div>''</li>');
+
+
+                            //var roomStatus = val.CheckIn +' '+val.CheckOut+' '+val.RoomName;
+                            _cardBody.append('<div class="col-md-3"><div class="card"><div class="card-body"><ul><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Check-In</div><div class="cart_total_price ml-auto">'+val.CheckIn+ '</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Check-Out</div><div class="cart_total_price ml-auto">'+val.CheckOut+'</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Check-In</div><div class="cart_total_price ml-auto">'+val.CheckIn+ '</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Check-Out</div><div class="cart_total_price ml-auto">'+val.CheckOut+'</div></li>' +val.RoomName+'</ul></div><div class="card-footer d-flex flex-row align-items-center justify-content-start"><h5 class="card-title ml-2 text-left">&#8358;0.00</h5><a href="https://ibomwaterfallsuites.com/" class="btn btn-info btn-sm text-right ml-auto">Return to home </a></div></div></div>');
+
+                            /*
+
+        var roomStatus = '<ul><li class="d-flex flex-row align-items-center justify-content-start">' '<div class="cart_total_title">Check-In</div> <div id="subTotal" class="cart_total_price ml-auto">'+ val.CheckIn +'</div>' '</li>' '<li class="d-flex flex-row align-items-center justify-content-start">' '<div class="cart_total_title">Check-Out</div>' '<div id="discount" class="cart_total_price ml-auto">'+val.CheckOut+'</div>' '</li>' '<li class="d-flex flex-row align-items-center justify-content-start">' '<div class="cart_total_title">Room Name</div>' '<div id="vat" class="cart_total_price ml-auto">'+'Room '+val.RoomName+'</div>' '</li>';
+                            */
+                            //$('</ul>', { html: roomStatus })  // Append the name and other data
+                            //.appendTo($('#cardBody'));
                         });
                     }
                 });
             });
         });
+    </script>
 
+    <script type="text/javascript">
 
     </script>
 </head>
@@ -93,10 +95,10 @@
                 <!-- Logo Header -->
                 <div class="logo-header" data-background-color="dark">
                     <a href="../index.html" class="logo">
-                        <img src="../assets/img/kaiadmin/logo-icon.jpg"
+                        <!--<img src="../assets/img/kaiadmin/logo-icon.jpg"
                              alt="navbar brand"
                              class="navbar-brand"
-                             height="20" />
+                             height="20" />-->
                         Ibom Waterfalls Hotel
                     </a>
                     <div class="nav-toggle">
@@ -272,10 +274,10 @@
                     <!-- Logo Header -->
                     <div class="logo-header" data-background-color="dark">
                         <a href="index.html" class="logo">
-                            <img src="../assets/img/kaiadmin/logo_light.svg"
+                            <!--<img src="../assets/img/kaiadmin/logo_light.svg"
                                  alt="navbar brand"
                                  class="navbar-brand"
-                                 height="20" />
+                                 height="20" />-->
                         </a>
                         <div class="nav-toggle">
                             <button class="btn btn-toggle toggle-sidebar">
@@ -315,9 +317,9 @@
                                    href="#"
                                    aria-expanded="false">
                                     <div class="avatar-sm">
-                                        <img src="assets/img/kaiadmin/logo-icon.jpg"
+                                        <!--<img src="assets/img/kaiadmin/logo-icon.jpg"
                                              alt="..."
-                                             class="avatar-img rounded-circle" />
+                                             class="avatar-img rounded-circle" />-->
                                     </div>
                                     <span class="profile-username">
                                         <span class="op-7">Hi,</span>
@@ -375,12 +377,12 @@
                     </div>
 
                     <!--Card STARTS Here-->
-                    <div id="cards" class="card">
+                    <div id="cards" class="">
                         <div class="card-header">
                             <ul class="nav nav-pills nav-info mt-2" id="pills-tab" role="tablist">
                                 <li class="nav-item">
 
-                                    <a class="nav-link ml-2 btn btn-md border border-dark " id="pills-Hotel-sale-tab" data-bs-toggle="pill" href="rooms.html?id=deluxe" role="tab" aria-controls="pills-Hotel-sale" aria-selected="true">
+                                    <a id="btn1" class="nav-link ml-2 btn btn-md border border-dark " data-bs-toggle="pill" role="tab" aria-controls="pills-Hotel-sale" aria-selected="true">
 
                                         <div class="row">
                                             <h4 class="card-title">Deluxe Room</h4>
@@ -389,7 +391,7 @@
                                 </li>
                                 <li class="nav-item">
 
-                                    <a class="nav-link ml-2 btn btn-md border border-dark" id="pills-Restaurant-sale-tab" data-bs-toggle="pill" href="rooms.html?id=executive" role="tab" aria-controls="pills-Restaurant-sale" aria-selected="false">
+                                    <a  id="btn2" class="nav-link ml-2 btn btn-md border border-dark" data-bs-toggle="pill" href="rooms.html?id=executive" role="tab" aria-controls="pills-Restaurant-sale" aria-selected="false">
 
 
                                         <div class="row">
@@ -398,7 +400,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link ml-2 btn btn-md border border-dark" id="pills-PoolBar-sale-tab" data-bs-toggle="pill" href="rooms.html?id=vip" role="tab" aria-controls="pills-PoolBar-sale" aria-selected="false">
+                                    <a id="btn3" class="nav-link ml-2 btn btn-md border border-dark"  data-bs-toggle="pill" href="rooms.html?id=vip" role="tab" aria-controls="pills-PoolBar-sale" aria-selected="false">
 
 
                                         <div class="row">
@@ -408,7 +410,7 @@
                                 </li>
                                 <li class="nav-item ">
 
-                                    <a class="nav-link ml-2 btn btn-md border border-dark" id="pills-hall-sale-tab" data-bs-toggle="pill" href="rooms.html?id=super executive" role="tab" aria-controls="pills-hall-sale" aria-selected="false">
+                                    <a id="btn4" class="nav-link ml-2 btn btn-md border border-dark"  data-bs-toggle="pill" href="rooms.html?id=super executive" role="tab" aria-controls="pills-hall-sale" aria-selected="false">
 
 
                                         <div class="row">
@@ -419,7 +421,7 @@
                                 </li>
                                 <li class="nav-item ">
 
-                                    <a class="nav-link ml-2 btn btn-md border border-dark" id="pills-hall-sale-tab" data-bs-toggle="pill" href="rooms.html?id=penthouse" role="tab" aria-controls="pills-hall-sale" aria-selected="false">
+                                    <a id="btn5" class="nav-link ml-2 btn btn-md border border-dark"  data-bs-toggle="pill" href="rooms.html?id=penthouse" role="tab" aria-controls="pills-hall-sale" aria-selected="false">
 
 
                                         <div class="row">
@@ -430,7 +432,7 @@
                                 </li>
                                 <li class="nav-item ">
 
-                                    <a class="nav-link ml-2 btn btn-md border border-dark" id="pills-hall-sale-tab" data-bs-toggle="pill" href="rooms.html?id=eze aro" role="tab" aria-controls="pills-hall-sale" aria-selected="false">
+                                    <a id="btn6" class="nav-link ml-2 btn btn-md border border-dark"  data-bs-toggle="pill" href="rooms.html?id=eze aro" role="tab" aria-controls="pills-hall-sale" aria-selected="false">
 
                                         <div class="row">
                                             <h4 class="card-title ">Eze Aro [Royal Suites]</h4>
@@ -441,45 +443,50 @@
                             </ul>
                             <!--</div>-->
                         </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="card mt-5">
-                                    <div id="cardBody" class="card-body text-center m-0">
+                        <!--<div class="row">
+                            <div class="col-md-12">-->
+                                <div id="cardBody" class="row mt-5">
+                                    <!--<div class="card-body">-->
                                         <!-- Cart Total -->
-                                        <div class="">
-                                            <div class="cart_total">
+                                        <!--<div class="">
+                                            <div class="cart_total">-->
                                                 <!--<div class="cart_title">cart total</div>-->
-                                                <ul>
-                                                    <li class="d-flex flex-row align-items-center justify-content-start">
+                                                <!--<ul>-->
+                                                    <!--<li class="d-flex flex-row align-items-center justify-content-start">
                                                         <div class="cart_total_title">Check-In</div>
-                                                        <div id="subTotal" class="cart_total_price ml-auto">11/21/2024</div><!--&#8358;45,000.00-->
+                                                        <div id="checkInDate" class="cart_total_price ml-auto">11/21/2027</div>
                                                     </li>
                                                     <li class="d-flex flex-row align-items-center justify-content-start">
                                                         <div class="cart_total_title">Check-Out</div>
-                                                        <div id="discount" class="cart_total_price ml-auto">11/29/2024</div>
+                                                        <div id="checkOutDate" class="cart_total_price ml-auto">11/29/2027</div>
                                                     </li>
                                                     <li class="d-flex flex-row align-items-center justify-content-start">
                                                         <div class="cart_total_title">Booking Date</div>
-                                                        <div id="vat" class="cart_total_price ml-auto">11/20/2024</div>
-                                                    </li>
+                                                        <div id="roomName" class="cart_total_price ml-auto">Room 101</div>
+                                                    </li>-->
                                                     <!--<li class="d-flex flex-row align-items-center justify-content-start">
                                                         <div class="cart_total_title">Total</div>
                                                         <div id="total" class="cart_total_price ml-auto">&#8358;45,000.00</div>
                                                     </li>-->
-                                                </ul>
-                                            </div>
-                                        </div>
+                                                <!--</div>-->
+                                            <!--</div>
+                                        </div>-->
 
-                                    </div>
-                                    <div class="card-footer d-flex flex-row align-items-center justify-content-start">
+                                    <!--</div>-->
+                                    <!--<div class="card-footer d-flex flex-row align-items-center justify-content-start">
                                         <h5 class="card-title ml-2 text-left">&#8358;0.00</h5>
                                         <a href="https://ibomwaterfallsuites.com/" class="btn btn-info btn-sm text-right ml-auto">Return to home </a>
                                     </div>
-                                </div>
+                                </div>-->
 
-                            </div>
+                            <!--</div>-->
                         </div>
 
+                        <!--<div class="card-footer d-flex flex-row align-items-center justify-content-start">
+                            <h5 class="card-title ml-2 text-left">&#8358;0.00</h5>
+                            <a href="https://ibomwaterfallsuites.com/" class="btn btn-info btn-sm text-right ml-auto">Return to home </a>
+                        </div>-->
+                    </div>
 
                     </div>
                         <!--Table ENDS Here-->
@@ -518,7 +525,6 @@
             <!-- Custom template | don't include it in your project! -->
             <!-- End Custom template -->
         </div>
-    </div>
         <!--   Core JS Files   -->
         <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
         <script src="../assets/js/core/popper.min.js"></script>
