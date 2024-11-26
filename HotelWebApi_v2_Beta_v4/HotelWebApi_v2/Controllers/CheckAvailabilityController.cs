@@ -8,19 +8,18 @@ using System.Web.Http;
 
 namespace HotelWebApi_v2.Controllers
 {
-    public class RoomsController : ApiController
+    public class CheckAvailabilityController : ApiController
     {
         Rooms room;
-        List<Rooms> roomLst;
-        // GET: api/Rooms
+        // GET: api/CheckAvailability
         public List<Rooms> Get()
         {
             try {
-
                 room = new Rooms();
-                roomLst = room.RoomsLoadAll();
+                List<Rooms> rmLst = new List<Rooms>();
+                rmLst = room.RoomsLoadAll();
 
-                return roomLst;
+                return rmLst;
             }
             catch (Exception ex) {
                 ex.ToString();
@@ -28,8 +27,8 @@ namespace HotelWebApi_v2.Controllers
             }
         }
 
-        // GET: api/Rooms/5
-        public List<Rooms> Get(string id) // Rooms Availability for Admin page
+        // GET: api/CheckAvailability/5
+        public List<Rooms> Get(string id)
         {
             try {
                 room = new Rooms();
@@ -44,17 +43,17 @@ namespace HotelWebApi_v2.Controllers
             }
         }
 
-        // POST: api/Rooms
+        // POST: api/CheckAvailability
         public void Post([FromBody]string value)
         {
         }
 
-        // PUT: api/Rooms/5
+        // PUT: api/CheckAvailability/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE: api/Rooms/5
+        // DELETE: api/CheckAvailability/5
         public void Delete(int id)
         {
         }
