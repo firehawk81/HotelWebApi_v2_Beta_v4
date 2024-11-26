@@ -722,6 +722,7 @@
     <Content Include="index.html" />
     <Content Include="maps\googlemaps.html" />
     <Content Include="maps\jsvectormap.html" />
+    <Content Include="Rooms\rooms.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
