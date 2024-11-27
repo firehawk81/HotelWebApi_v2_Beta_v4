@@ -50,40 +50,247 @@
     <script src="../assets/js/jquery-3.7.1.min.js"></script>
 
     <script type="text/javascript">
-        $(document).ready(function () {
-            var _cardBody = $('#cards');
 
-            $('#pills-Hotel-sale-tab').click(function () {
+        $(document).ready(function () {
+        const theRoomType = 'deluxe';
+
+            var _cardBody = $('#cardBody');
+            $('#btn1').click(function () {
                 $.ajax({
                     contentType: 'GET',
-                    url: 'https://195.201.81.237/plesk-site-preview/iwr.9appsoft.com/api/DailySalesHotel',
+                    url: 'https://195.201.81.237/plesk-site-preview/iwr.9appsoft.com/api/CheckAvailability/'+theRoomType,
                     dataType: 'json',
                     success: function (data) {
+                        var outstanding = 0
+                        var revenue = 0;
+                        var night = 0;
+                        var CheckIn = 0;
+                        var CheckOut = 0;
                         _cardBody.empty();
                         $.each(data, function (key, val) {
-         var roomStatus = '<ul><li class="d-flex flex-row align-items-center justify-content-start">'
-            '<div class="cart_total_title">Check-In</div> <div id="subTotal" class="cart_total_price ml-auto">'+ val.AccountName +'</div>'
-        '</li>'
-        '<li class="d-flex flex-row align-items-center justify-content-start">'
-            '<div class="cart_total_title">Check-Out</div>'
-            '<div id="discount" class="cart_total_price ml-auto">'+val.AccountName+'</div>'
-        '</li>'
-        '<li class="d-flex flex-row align-items-center justify-content-start">'
-            '<div class="cart_total_title">Booking Date</div>'
-            '<div id="vat" class="cart_total_price ml-auto">'+val.AccountName+'</div>'
-        '</li>'
-        '</ul>'
-        + val.TransactDate + '</td><td>' + val.CheckInDate + ' / ' + val.CheckOutDate + '</td><td>' + val.Nights + '</td><td>' + val.Rooms + '</td><td>' + val.RefNo + '</td><td>' + val.UserFullName + '</td>' + '</td><td>' + val.Rate + '</td>' + '</td><td>' + val.Credit + '</td>';
-                            $('</ul>', { html: roomStatus })  // Append the name and other data
-                            .appendTo($('#cards'));
+                            //var roomStatus = val.CheckIn +' '+val.CheckOut+' '+val.RoomName;
+                            outstanding = outstanding + val.Balance;        //
+                                //roomRate = 45000; // Will be deleted later
+                                //const nights = checkOutDate.getDate() - checkInDate.getDate();
+                                //singleTotal = roomRate * nights * noOfRooms;
+                                //const nights = checkInDate * checkOutDate
+                            CheckIn = new Date(val.CheckIn);
+                            CheckOut = new Date(val.CheckOut);
+
+                            night = CheckOut - CheckIn;
+                            revenue = revenue + (night * val.Rate);
+                            _cardBody.append('<div class="col-md-3"><div class="card"><div class="card-body"><ul><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_price mb-2 ml-auto">'+val.AccountName.toUpperCase().bold()+ '</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Check-In</div><div class="cart_total_price ml-auto">'+val.CheckIn+'</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Check-Out</div><div class="cart_total_price ml-auto">'+val.CheckOut+ '</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Room Name</div><div class="cart_total_price ml-auto">'+val.RoomName+'</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title '+val.DangerText+'">Balance</div><div class="cart_total_price ml-auto '+val.DangerText+'">&#8358;'+val.Balance.toLocaleString(undefined, { maximumFractionDigits: 2 })+'</div></li></ul></div><div class="card-footer d-flex flex-row align-items-center justify-content-start"><h5 class="cart_total_price ml-2 text-left '+val.DangerText+'">'+val.RefNo.toUpperCase().bold()+'</h5><a href="https://ibomwaterfallsuites.com/" class="btn '+val.DangerBorder+' '+val.DangerText+' btn-sm ml-auto">Room Info</a></div></div></div>');
+
                         });
+                        $("#revenues").html('&#8358;'+revenue.toLocaleString(undefined, { maximumFractionDigits: 2 }));
+                        $("#outstandings").html('&#8358;'+outstanding.toLocaleString(undefined, { maximumFractionDigits: 2 }));
+                        $("#roomCategoryName").html(theRoomType.toUpperCase());
+                        //outstandings = outstanding;
+                    }
+                });
+            });
+        });
+
+        $(document).ready(function () {
+        const theRoomType = 'executive';
+
+            var _cardBody = $('#cardBody');
+            $('#btn2').click(function () {
+                $.ajax({
+                    contentType: 'GET',
+                    url: 'https://195.201.81.237/plesk-site-preview/iwr.9appsoft.com/api/CheckAvailability/'+theRoomType,
+                    dataType: 'json',
+                    success: function (data) {
+                        var outstanding = 0
+                        var revenue = 0;
+                        var night = 0;
+                        var CheckIn = 0;
+                        var CheckOut = 0;
+                        _cardBody.empty();
+                        $.each(data, function (key, val) {
+                            //var roomStatus = val.CheckIn +' '+val.CheckOut+' '+val.RoomName;
+                            outstanding = outstanding + val.Balance;        //revenue
+
+                            CheckIn = new Date(val.CheckIn);
+                            CheckOut = new Date(val.CheckOut);
+
+                            night = CheckOut - CheckIn;
+                            revenue = revenue + (night * val.Rate);
+                            _cardBody.append('<div class="col-md-3"><div class="card"><div class="card-body"><ul><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_price mb-2 ml-auto">'+val.AccountName.toUpperCase().bold()+ '</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Check-In</div><div class="cart_total_price ml-auto">'+val.CheckIn+'</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Check-Out</div><div class="cart_total_price ml-auto">'+val.CheckOut+ '</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Room Name</div><div class="cart_total_price ml-auto">'+val.RoomName+'</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title '+val.DangerText+'">Balance</div><div class="cart_total_price ml-auto '+val.DangerText+'">&#8358;'+val.Balance.toLocaleString(undefined, { maximumFractionDigits: 2 })+'</div></li></ul></div><div class="card-footer d-flex flex-row align-items-center justify-content-start"><h5 class="cart_total_price ml-2 text-left '+val.DangerText+'">'+val.RefNo.toUpperCase().bold()+'</h5><a href="https://ibomwaterfallsuites.com/" class="btn '+val.DangerBorder+' '+val.DangerText+' btn-sm ml-auto">Room Info</a></div></div></div>');
+
+                        });
+                        $("#revenues").html('&#8358;'+revenue.toLocaleString(undefined, { maximumFractionDigits: 2 }));
+                        $("#outstandings").html('&#8358;'+outstanding.toLocaleString(undefined, { maximumFractionDigits: 2 }));
+                        $("#roomCategoryName").html(theRoomType.toUpperCase());
+                        //outstandings = outstanding;
+                    }
+                });
+            });
+        });
+
+        $(document).ready(function () {
+        const theRoomType = 'vip';
+
+            var _cardBody = $('#cardBody');
+            $('#btn3').click(function () {
+                $.ajax({
+                    contentType: 'GET',
+                    url: 'https://195.201.81.237/plesk-site-preview/iwr.9appsoft.com/api/CheckAvailability/'+theRoomType,
+                    dataType: 'json',
+                    success: function (data) {
+                        var outstanding = 0
+                        var revenue = 0;
+                        var night = 0;
+                        var CheckIn = 0;
+                        var CheckOut = 0;
+                        _cardBody.empty();
+                        $.each(data, function (key, val) {
+                            //var roomStatus = val.CheckIn +' '+val.CheckOut+' '+val.RoomName;
+                            outstanding = outstanding + val.Balance;        //revenue
+
+                            CheckIn = new Date(val.CheckIn);
+                            CheckOut = new Date(val.CheckOut);
+
+                            night = CheckOut - CheckIn;
+                            revenue = revenue + (night * val.Rate);
+                            _cardBody.append('<div class="col-md-3"><div class="card"><div class="card-body"><ul><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_price mb-2 ml-auto">'+val.AccountName.toUpperCase().bold()+ '</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Check-In</div><div class="cart_total_price ml-auto">'+val.CheckIn+'</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Check-Out</div><div class="cart_total_price ml-auto">'+val.CheckOut+ '</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Room Name</div><div class="cart_total_price ml-auto">'+val.RoomName+'</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title '+val.DangerText+'">Balance</div><div class="cart_total_price ml-auto '+val.DangerText+'">&#8358;'+val.Balance.toLocaleString(undefined, { maximumFractionDigits: 2 })+'</div></li></ul></div><div class="card-footer d-flex flex-row align-items-center justify-content-start"><h5 class="cart_total_price ml-2 text-left '+val.DangerText+'">'+val.RefNo.toUpperCase().bold()+'</h5><a href="https://ibomwaterfallsuites.com/" class="btn '+val.DangerBorder+' '+val.DangerText+' btn-sm ml-auto">Room Info</a></div></div></div>');
+
+                        });
+                        $("#revenues").html('&#8358;'+revenue.toLocaleString(undefined, { maximumFractionDigits: 2 }));
+                        $("#outstandings").html('&#8358;'+outstanding.toLocaleString(undefined, { maximumFractionDigits: 2 }));
+                        $("#roomCategoryName").html(theRoomType.toUpperCase());
+                        //outstandings = outstanding;
+                    }
+                });
+            });
+        });
+
+        $(document).ready(function () {
+        const theRoomType = 'super executive';
+
+            var _cardBody = $('#cardBody');
+            $('#btn4').click(function () {
+                $.ajax({
+                    contentType: 'GET',
+                    url: 'https://195.201.81.237/plesk-site-preview/iwr.9appsoft.com/api/CheckAvailability/'+theRoomType,
+                    dataType: 'json',
+                    success: function (data) {
+                        var outstanding = 0
+                        var revenue = 0;
+                        var night = 0;
+                        var CheckIn = 0;
+                        var CheckOut = 0;
+                        _cardBody.empty();
+                        $.each(data, function (key, val) {
+                            //var roomStatus = val.CheckIn +' '+val.CheckOut+' '+val.RoomName;
+                            outstanding = outstanding + val.Balance;        //revenue
+
+                            CheckIn = new Date(val.CheckIn);
+                            CheckOut = new Date(val.CheckOut);
+
+                            night = CheckOut - CheckIn;
+                            revenue = revenue + (night * val.Rate);
+                            _cardBody.append('<div class="col-md-3"><div class="card"><div class="card-body"><ul><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_price mb-2 ml-auto">'+val.AccountName.toUpperCase().bold()+ '</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Check-In</div><div class="cart_total_price ml-auto">'+val.CheckIn+'</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Check-Out</div><div class="cart_total_price ml-auto">'+val.CheckOut+ '</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Room Name</div><div class="cart_total_price ml-auto">'+val.RoomName+'</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title '+val.DangerText+'">Balance</div><div class="cart_total_price ml-auto '+val.DangerText+'">&#8358;'+val.Balance.toLocaleString(undefined, { maximumFractionDigits: 2 })+'</div></li></ul></div><div class="card-footer d-flex flex-row align-items-center justify-content-start"><h5 class="cart_total_price ml-2 text-left '+val.DangerText+'">'+val.RefNo.toUpperCase().bold()+'</h5><a href="https://ibomwaterfallsuites.com/" class="btn '+val.DangerBorder+' '+val.DangerText+' btn-sm ml-auto">Room Info</a></div></div></div>');
+
+                        });
+                        $("#revenues").html('&#8358;'+revenue.toLocaleString(undefined, { maximumFractionDigits: 2 }));
+                        $("#outstandings").html('&#8358;'+outstanding.toLocaleString(undefined, { maximumFractionDigits: 2 }));
+                        $("#roomCategoryName").html(theRoomType.toUpperCase());
+                        //outstandings = outstanding;
                     }
                 });
             });
         });
 
 
+        $(document).ready(function () {
+        const theRoomType = 'penthouse';
+
+            var _cardBody = $('#cardBody');
+            $('#btn5').click(function () {
+                $.ajax({
+                    contentType: 'GET',
+                    url: 'https://195.201.81.237/plesk-site-preview/iwr.9appsoft.com/api/CheckAvailability/'+theRoomType,
+                    dataType: 'json',
+                    success: function (data) {
+                        var outstanding = 0
+                        var revenue = 0;
+                        var night = 0;
+                        var CheckIn = 0;
+                        var CheckOut = 0;
+                        _cardBody.empty();
+                        $.each(data, function (key, val) {
+                            //var roomStatus = val.CheckIn +' '+val.CheckOut+' '+val.RoomName;
+                            outstanding = outstanding + val.Balance;        //revenue
+
+                            CheckIn = new Date(val.CheckIn);
+                            CheckOut = new Date(val.CheckOut);
+
+                            night = CheckOut - CheckIn;
+                            revenue = revenue + (night * val.Rate);
+                            _cardBody.append('<div class="col-md-3"><div class="card"><div class="card-body"><ul><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_price mb-2 ml-auto">'+val.AccountName.toUpperCase().bold()+ '</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Check-In</div><div class="cart_total_price ml-auto">'+val.CheckIn+'</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Check-Out</div><div class="cart_total_price ml-auto">'+val.CheckOut+ '</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Room Name</div><div class="cart_total_price ml-auto">'+val.RoomName+'</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title '+val.DangerText+'">Balance</div><div class="cart_total_price ml-auto '+val.DangerText+'">&#8358;'+val.Balance.toLocaleString(undefined, { maximumFractionDigits: 2 })+'</div></li></ul></div><div class="card-footer d-flex flex-row align-items-center justify-content-start"><h5 class="cart_total_price ml-2 text-left '+val.DangerText+'">'+val.RefNo.toUpperCase().bold()+'</h5><a href="https://ibomwaterfallsuites.com/" class="btn '+val.DangerBorder+' '+val.DangerText+' btn-sm ml-auto">Room Info</a></div></div></div>');
+
+                        });
+                        $("#revenues").html('&#8358;'+revenue.toLocaleString(undefined, { maximumFractionDigits: 2 }));
+                        $("#outstandings").html('&#8358;'+outstanding.toLocaleString(undefined, { maximumFractionDigits: 2 }));
+                        $("#roomCategoryName").html(theRoomType.toUpperCase());
+                        //outstandings = outstanding;
+                    }
+                });
+            });
+        });
+
+        $(document).ready(function () {
+        const theRoomType = 'eze aro';
+
+            var _cardBody = $('#cardBody');
+            $('#btn6').click(function () {
+                $.ajax({
+                    contentType: 'GET',
+                    url: 'https://195.201.81.237/plesk-site-preview/iwr.9appsoft.com/api/CheckAvailability/'+theRoomType,
+                    dataType: 'json',
+                    success: function (data) {
+                        var outstanding = 0
+                        var revenue = 0;
+                        var night = 0;
+                        var CheckIn = 0;
+                        var CheckOut = 0;
+                        _cardBody.empty();
+                        $.each(data, function (key, val) {
+                            //var roomStatus = val.CheckIn +' '+val.CheckOut+' '+val.RoomName;
+                            outstanding = outstanding + val.Balance;        //revenue
+
+                            CheckIn = new Date(val.CheckIn);
+                            CheckOut = new Date(val.CheckOut);
+
+                            night = CheckOut - CheckIn;
+                            revenue = revenue + (night * val.Rate);
+                            _cardBody.append('<div class="col-md-3"><div class="card"><div class="card-body"><ul><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_price mb-2 ml-auto">'+val.AccountName.toUpperCase().bold()+ '</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Check-In</div><div class="cart_total_price ml-auto">'+val.CheckIn+'</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Check-Out</div><div class="cart_total_price ml-auto">'+val.CheckOut+ '</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Room Name</div><div class="cart_total_price ml-auto">'+val.RoomName+'</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title '+val.DangerText+'">Balance</div><div class="cart_total_price ml-auto '+val.DangerText+'">&#8358;'+val.Balance.toLocaleString(undefined, { maximumFractionDigits: 2 })+'</div></li></ul></div><div class="card-footer d-flex flex-row align-items-center justify-content-start"><h5 class="cart_total_price ml-2 text-left '+val.DangerText+'">'+val.RefNo.toUpperCase().bold()+'</h5><a href="https://ibomwaterfallsuites.com/" class="btn '+val.DangerBorder+' '+val.DangerText+' btn-sm ml-auto">Room Info</a></div></div></div>');
+
+                        });
+                        $("#revenues").html('&#8358;'+revenue.toLocaleString(undefined, { maximumFractionDigits: 2 }));
+                        $("#outstandings").html('&#8358;'+outstanding.toLocaleString(undefined, { maximumFractionDigits: 2 }));
+                        $("#roomCategoryName").html(theRoomType.toUpperCase());
+                        //outstandings = outstanding;
+                    }
+                });
+            });
+        });
     </script>
+    <style type="text/css">
+        .danger-text {
+            color: #ff0000;
+        }
+        .danger-border {
+            border: solid;
+            border-color: #ff0000;
+        }
+        .primary-border {
+            border: solid;
+            border-color: #1c7bc3;
+        }
+
+    </style>
 </head>
 <body class="">
     <div class="wrapper sidebar_minimize">
@@ -93,10 +300,10 @@
                 <!-- Logo Header -->
                 <div class="logo-header" data-background-color="dark">
                     <a href="../index.html" class="logo">
-                        <img src="../assets/img/kaiadmin/logo-icon.jpg"
+                        <!--<img src="../assets/img/kaiadmin/logo-icon.jpg"
                              alt="navbar brand"
                              class="navbar-brand"
-                             height="20" />
+                             height="20" />-->
                         Ibom Waterfalls Hotel
                     </a>
                     <div class="nav-toggle">
@@ -272,10 +479,10 @@
                     <!-- Logo Header -->
                     <div class="logo-header" data-background-color="dark">
                         <a href="index.html" class="logo">
-                            <img src="../assets/img/kaiadmin/logo_light.svg"
+                            <!--<img src="../assets/img/kaiadmin/logo_light.svg"
                                  alt="navbar brand"
                                  class="navbar-brand"
-                                 height="20" />
+                                 height="20" />-->
                         </a>
                         <div class="nav-toggle">
                             <button class="btn btn-toggle toggle-sidebar">
@@ -294,18 +501,23 @@
                 <!-- Navbar Header -->
                 <nav class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
                     <div class="container">
-                        <!--<nav class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
-                            <div class="input-group">
+                        <nav class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
+                            <!--<div class="input-group">
                                 <div class="input-group-prepend">
                                     <button type="submit" class="btn btn-search pe-1">
                                         <i class="fa fa-search search-icon"></i>
                                     </button>
+
                                 </div>
                                 <input type="text"
                                        placeholder="Search ..."
                                        class="form-control" />
+                            </div>-->
+                            <div>
+                                <h3 id="roomCategoryName" class="fw-bold mb-3">Dashboard</h3>
+                                <!--<h6 class="op-7 mb-2">Free Bootstrap 5 Admin Dashboard</h6>-->
                             </div>
-                        </nav>-->
+                        </nav>
 
                         <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
 
@@ -315,9 +527,9 @@
                                    href="#"
                                    aria-expanded="false">
                                     <div class="avatar-sm">
-                                        <img src="assets/img/kaiadmin/logo-icon.jpg"
+                                        <!--<img src="assets/img/kaiadmin/logo-icon.jpg"
                                              alt="..."
-                                             class="avatar-img rounded-circle" />
+                                             class="avatar-img rounded-circle" />-->
                                     </div>
                                     <span class="profile-username">
                                         <span class="op-7">Hi,</span>
@@ -363,24 +575,48 @@
             <div class="container">
                 <div class="page-inner">
                     <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-0 pb-2">
-                        <div>
-                            <h3 class="fw-bold mb-3">Dashboard</h3>
-                            <h6 class="op-7 mb-2"><!--Free Bootstrap 5 Admin Dashboard--></h6>
+                        <!--<div>
+                            <h3 id="roomCategoryName" class="fw-bold mb-3">Dashboard</h3>
+                            <h6 class="op-7 mb-2">Free Bootstrap 5 Admin Dashboard</h6>
+                        </div>-->
+                        <div class="py-2 py-md-0 m-0">
+                            <a class="btn text-danger disable me-2">Outstandings</a>
+                            <a id="outstandings" href="#" class="btn btn-label-danger text-danger">&#8358;0.00</a>
+                            <!--<a href="#" class="btn btn-primary btn-clean">New User</a>-->
+                            
                         </div>
-                        <div class="ms-md-auto py-2 py-md-0">
-                            <!--<a href="#" class="btn btn-label-info btn-round me-2">Manage</a>-->
-                            <a href="#" class="btn btn-primary btn-clean">New User</a>
+                        <div class="ms-md-auto py-2 py-md-0 m-0">
+                            <a class="btn text-primary disable me-2">Revenue</a>
+                            <a id="revenues" href="#" class="btn btn-label-success text-success">&#8358;0.00</a>
+                            <!--<a href="#" class="btn btn-primary btn-clean">New User</a>-->
 
                         </div>
                     </div>
 
                     <!--Card STARTS Here-->
-                    <div id="cards" class="card">
+                    <div id="cards" class="">
                         <div class="card-header">
-                            <ul class="nav nav-pills nav-info mt-2" id="pills-tab" role="tablist">
+
+                            <div id="outstandingsContainer" class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-0 mt-3 pb-0">
+                                <div class="ml-3 py-2 py-md-0">
+                                    <!--<a href="#" class="btn btn-label-info text-primary me-2">Revenue</a>-->
+                                    <a id="btn1" href="#" class="btn btn-info text-info m-2 me-2 col-md-2">Deluxe Room</a>
+                                    <a id="btn2" href="#" class="btn btn-info text-info m-2 me-2 col-md-2">Executive Room</a>
+                                    <a id="btn3" href="#" class="btn btn-info text-info m-2 me-2 col-md-2">VIP Room</a>
+                                    <a id="btn4" href="#" class="btn btn-info text-info m-2 me-2 col-md-2">Super Executive</a>
+
+                                    <a id="btn5" href="#" class="btn btn-info text-info m-2 me-2 col-md-2">Penthouse Suites </a>
+                                    <a id="btn6" href="#" class="btn btn-info text-info m-2 me-2 col-md-2">Eze Aro [Royal Suites]</a>
+                                    <a id="btn7" href="#" class="btn btn-info text-info m-2 me-2 col-md-2">Meetings & Events</a>
+                                    <!--<a href="#" class="btn btn-primary btn-clean">New User</a>-->
+
+                                </div>
+                            </div>
+
+                            <!--<ul class="nav nav-pills nav-info mt-2" id="pills-tab" role="tablist">
                                 <li class="nav-item">
 
-                                    <a class="nav-link ml-2 btn btn-md border border-dark " id="pills-Hotel-sale-tab" data-bs-toggle="pill" href="rooms.html?id=deluxe" role="tab" aria-controls="pills-Hotel-sale" aria-selected="true">
+                                    <a id="btn1" class="nav-link ml-2 card btn btn-info btn-md " data-bs-toggle="pill" role="tab" aria-controls="pills-Hotel-sale" aria-selected="true">
 
                                         <div class="row">
                                             <h4 class="card-title">Deluxe Room</h4>
@@ -389,7 +625,7 @@
                                 </li>
                                 <li class="nav-item">
 
-                                    <a class="nav-link ml-2 btn btn-md border border-dark" id="pills-Restaurant-sale-tab" data-bs-toggle="pill" href="rooms.html?id=executive" role="tab" aria-controls="pills-Restaurant-sale" aria-selected="false">
+                                    <a id="btn2" class="nav-link ml-2 card btn btn-info btn-md " data-bs-toggle="pill" href="rooms.html?id=executive" role="tab" aria-controls="pills-Restaurant-sale" aria-selected="false">
 
 
                                         <div class="row">
@@ -398,7 +634,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link ml-2 btn btn-md border border-dark" id="pills-PoolBar-sale-tab" data-bs-toggle="pill" href="rooms.html?id=vip" role="tab" aria-controls="pills-PoolBar-sale" aria-selected="false">
+                                    <a id="btn3" class="nav-link ml-2 card btn btn-info btn-md " data-bs-toggle="pill" href="rooms.html?id=vip" role="tab" aria-controls="pills-PoolBar-sale" aria-selected="false">
 
 
                                         <div class="row">
@@ -408,7 +644,7 @@
                                 </li>
                                 <li class="nav-item ">
 
-                                    <a class="nav-link ml-2 btn btn-md border border-dark" id="pills-hall-sale-tab" data-bs-toggle="pill" href="rooms.html?id=super executive" role="tab" aria-controls="pills-hall-sale" aria-selected="false">
+                                    <a id="btn4" class="nav-link ml-2 card btn btn-info btn-md " data-bs-toggle="pill" href="rooms.html?id=super executive" role="tab" aria-controls="pills-hall-sale" aria-selected="false">
 
 
                                         <div class="row">
@@ -419,7 +655,7 @@
                                 </li>
                                 <li class="nav-item ">
 
-                                    <a class="nav-link ml-2 btn btn-md border border-dark" id="pills-hall-sale-tab" data-bs-toggle="pill" href="rooms.html?id=penthouse" role="tab" aria-controls="pills-hall-sale" aria-selected="false">
+                                    <a id="btn5" class="nav-link ml-2 card btn btn-info btn-md " data-bs-toggle="pill" href="rooms.html?id=penthouse" role="tab" aria-controls="pills-hall-sale" aria-selected="false">
 
 
                                         <div class="row">
@@ -430,7 +666,7 @@
                                 </li>
                                 <li class="nav-item ">
 
-                                    <a class="nav-link ml-2 btn btn-md border border-dark" id="pills-hall-sale-tab" data-bs-toggle="pill" href="rooms.html?id=eze aro" role="tab" aria-controls="pills-hall-sale" aria-selected="false">
+                                    <a class="nav-link ml-2 card btn btn-info btn-md " data-bs-toggle="pill" href="rooms.html?id=eze aro" role="tab" aria-controls="pills-hall-sale" aria-selected="false">
 
                                         <div class="row">
                                             <h4 class="card-title ">Eze Aro [Royal Suites]</h4>
@@ -438,48 +674,75 @@
 
                                     </a>
                                 </li>
-                            </ul>
-                            <!--</div>-->
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="card mt-5">
-                                    <div id="cardBody" class="card-body text-center m-0">
+                            </ul>-->
+
+                                <!--<div id="outstandingsContainer" class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-0 mt-3 pb-0">
+                                    <div>
+                                        <h3 class="fw-bold mb-0">Outstandings</h3>
+                                        <h6 class="op-7 mb-2">Free Bootstrap 5 Admin Dashboard</h6>
+                                    </div>
+                                    <div class="ml-3 py-2 py-md-0">
+                                        <a href="#" class="btn btn-label-info text-primary me-2">Revenue</a>
+                                        <a id="outstandings" href="#" class="btn btn-label-danger text-danger me-2">&#8358;0.00</a>
+                                        <a href="#" class="btn btn-primary btn-clean">New User</a>
+
+                                    </div>
+                                    <div class="ms-md-auto py-2 py-md-0">
+                                        <a href="#" class="btn btn-label-info text-primary me-2">Revenue</a>
+                                        <a id="btn5" href="#" class="btn btn-info text-info me-2">Penthouse Suites </a>
+                                        <a id="btn6" href="#" class="btn btn-info text-info me-2">Eze Aro [Royal Suites]</a>
+                                        <a id="btn7" href="#" class="btn btn-info text-info me-2">Meetings & Events</a>
+                                        <a href="#" class="btn btn-primary btn-clean">New User</a>
+
+                                    </div>
+                                </div>-->
+
+                                <!--</div>-->
+                            </div>
+                        <!--<div class="row">
+                            <div class="col-md-12">-->
+                                <div id="cardBody" class="row mt-5">
+                                    <!--<div class="card-body">-->
                                         <!-- Cart Total -->
-                                        <div class="">
-                                            <div class="cart_total">
+                                        <!--<div class="">
+                                            <div class="cart_total">-->
                                                 <!--<div class="cart_title">cart total</div>-->
-                                                <ul>
-                                                    <li class="d-flex flex-row align-items-center justify-content-start">
+                                                <!--<ul>-->
+                                                    <!--<li class="d-flex flex-row align-items-center justify-content-start">
                                                         <div class="cart_total_title">Check-In</div>
-                                                        <div id="subTotal" class="cart_total_price ml-auto">11/21/2024</div><!--&#8358;45,000.00-->
+                                                        <div id="checkInDate" class="cart_total_price ml-auto">11/21/2027</div>
                                                     </li>
                                                     <li class="d-flex flex-row align-items-center justify-content-start">
                                                         <div class="cart_total_title">Check-Out</div>
-                                                        <div id="discount" class="cart_total_price ml-auto">11/29/2024</div>
+                                                        <div id="checkOutDate" class="cart_total_price ml-auto">11/29/2027</div>
                                                     </li>
                                                     <li class="d-flex flex-row align-items-center justify-content-start">
                                                         <div class="cart_total_title">Booking Date</div>
-                                                        <div id="vat" class="cart_total_price ml-auto">11/20/2024</div>
-                                                    </li>
+                                                        <div id="roomName" class="cart_total_price ml-auto">Room 101</div>
+                                                    </li>-->
                                                     <!--<li class="d-flex flex-row align-items-center justify-content-start">
                                                         <div class="cart_total_title">Total</div>
                                                         <div id="total" class="cart_total_price ml-auto">&#8358;45,000.00</div>
                                                     </li>-->
-                                                </ul>
-                                            </div>
-                                        </div>
+                                                <!--</div>-->
+                                            <!--</div>
+                                        </div>-->
 
-                                    </div>
-                                    <div class="card-footer d-flex flex-row align-items-center justify-content-start">
+                                    <!--</div>-->
+                                    <!--<div class="card-footer d-flex flex-row align-items-center justify-content-start">
                                         <h5 class="card-title ml-2 text-left">&#8358;0.00</h5>
                                         <a href="https://ibomwaterfallsuites.com/" class="btn btn-info btn-sm text-right ml-auto">Return to home </a>
                                     </div>
-                                </div>
+                                </div>-->
 
-                            </div>
+                            <!--</div>-->
                         </div>
 
+                        <!--<div class="card-footer d-flex flex-row align-items-center justify-content-start">
+                            <h5 class="card-title ml-2 text-left">&#8358;0.00</h5>
+                            <a href="https://ibomwaterfallsuites.com/" class="btn btn-info btn-sm text-right ml-auto">Return to home </a>
+                        </div>-->
+                    </div>
 
                     </div>
                         <!--Table ENDS Here-->
@@ -518,7 +781,6 @@
             <!-- Custom template | don't include it in your project! -->
             <!-- End Custom template -->
         </div>
-    </div>
         <!--   Core JS Files   -->
         <script src="../assets/js/core/jquery-3.7.1.min.js"></script>
         <script src="../assets/js/core/popper.min.js"></script>
