@@ -28,9 +28,14 @@ namespace HotelWebApi_v2.Models
         public string RoomName { get; set; }
         public string RoomNumber { get; set; }
         public int RoomStatusID { get; set; }
-        public string StatusColor { get; set; }
         public int TotalAvailable { get; set; }
         public decimal Balance { get; set; }
+
+        // Attributes
+        public string StatusColor { get; set; }
+        public string DangerText { get; set; }
+        public string DangerBorder { get; set; }
+
         // Customers Details
         public string AccountName { get; set; }
 
@@ -65,6 +70,8 @@ namespace HotelWebApi_v2.Models
                                 room.CategoryName = reader["CategoryName"].ToString();
                                 room.RefNo = reader["RefNo"].ToString();
                                 room.Balance = Convert.ToDecimal(reader["Balance"]);
+
+                                room.DangerText = "cart_total_price ml-auto none";
                                 lst.Add(room);
                             }
                             return lst;
@@ -112,9 +119,23 @@ namespace HotelWebApi_v2.Models
                                 room.CheckedIn = Convert.ToBoolean(reader["CheckedIn"]);
                                 room.Paid = Convert.ToBoolean(reader["Paid"]);
                                 room.Rate = Convert.ToDecimal(reader["Rate"]);
-                                if (room.Booked != true) {
+                                if (room.CheckedIn == true || room.Booked == true) {
+
+                                    if (room.Balance > 0) {
+
+                                        room.DangerText = "text-danger";
+                                    }
+                                    if (room.Booked == true && room.CheckedIn == false) {
+
+                                        room.DangerBorder = "cart_total_price ml-auto bg-white text-primary primary-border";
+                                    }
+                                    if (room.CheckedIn) {
+
+                                        room.DangerBorder = "cart_total_price ml-auto bg-white text-danger danger-border";
+                                    }
+
                                     lst.Add(room);
-                                    room.TotalAvailable= lst.Count;
+                                    room.TotalAvailable = lst.Count;
                                 }
                             }
                             return lst;
