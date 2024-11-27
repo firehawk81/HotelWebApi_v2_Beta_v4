@@ -18,6 +18,7 @@ namespace HotelWebApi_v2.Models
         public bool CheckedIn { get; set; }
         public string CheckIn { get; set; }
         public string CheckOut { get; set; }
+        public string BookingDate { get; set; }
         public int Floors { get; set; }
         public int FloorsID { get; set; }
         public bool Paid { get; set; }
@@ -30,12 +31,15 @@ namespace HotelWebApi_v2.Models
         public string StatusColor { get; set; }
         public int TotalAvailable { get; set; }
         public decimal Balance { get; set; }
+        // Customers Details
+        public string AccountName { get; set; }
 
         public List<Rooms> RoomsLoadAll() {
             Rooms room;
             try {
                 using (SqlConnection con = new SqlConnection()) {
-                    con.ConnectionString = "Data Source =.\\MSSQLSERVER2012;Initial Catalog=Ibomwater_db;User ID=Ibom_user;Password=@Down1234#;Integrated Security=False";
+                    con.ConnectionString = Properties.Settings.Default.ConnectionStr;
+                    //"Data Source =.\\MSSQLSERVER2012;Initial Catalog=Ibomwater_db;User ID=Ibom_user;Password=@Down1234#;Integrated Security=False";
 
                     using (SqlCommand cmd = new SqlCommand()) {
                         cmd.Connection = con;
@@ -48,6 +52,9 @@ namespace HotelWebApi_v2.Models
                             while (reader.Read()) {
 
                                 room = new Rooms();
+                                room.AccountName = reader["AccountName"].ToString();
+                                room.Balance = Convert.ToDecimal(reader["Balance"]);
+
                                 room.CheckIn = reader["CheckIn"].ToString();
                                 room.CheckOut = reader["CheckOut"].ToString();
                                 room.CheckedIn = (bool)reader["CheckedIn"];
@@ -75,7 +82,6 @@ namespace HotelWebApi_v2.Models
             try {
                 using (SqlConnection con = new SqlConnection()) {
                     con.ConnectionString = "Data Source =.\\MSSQLSERVER2012;Initial Catalog=Ibomwater_db;User ID=Ibom_user;Password=@Down1234#;Integrated Security=False";
-                    //
                     //Properties.Settings.Default.ConnectionStr;
 
                     using (SqlCommand cmd = new SqlCommand()) {
@@ -90,13 +96,16 @@ namespace HotelWebApi_v2.Models
                             while (reader.Read()) {
 
                                 room = new Rooms();
+                                room.AccountName = reader["AccountName"].ToString();
+                                room.Balance = Convert.ToDecimal(reader["Balance"]);
+
                                 room.CheckIn = reader["CheckIn"].ToString();
                                 room.CheckOut = reader["CheckOut"].ToString();
                                 room.CheckedIn = (bool)reader["CheckedIn"];
                                 room.Booked = (bool)reader["Booked"];
 
                                 room.RoomName = reader["RoomName"].ToString();
-                                room.RoomNumber = reader["RoomNumber"].ToString();
+                                //room.RoomNumber = reader["RoomNumber"].ToString();
                                 room.CategoryName = reader["CategoryName"].ToString();
                                 room.RefNo = reader["RefNo"].ToString();
                                 room.Booked = Convert.ToBoolean(reader["Booked"]);

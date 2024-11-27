@@ -68,7 +68,7 @@
 
 
                             //var roomStatus = val.CheckIn +' '+val.CheckOut+' '+val.RoomName;
-                            _cardBody.append('<div class="col-md-3"><div class="card"><div class="card-body"><ul><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Check-In</div><div class="cart_total_price ml-auto">'+val.CheckIn+ '</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Check-Out</div><div class="cart_total_price ml-auto">'+val.CheckOut+'</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Check-In</div><div class="cart_total_price ml-auto">'+val.CheckIn+ '</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Check-Out</div><div class="cart_total_price ml-auto">'+val.CheckOut+'</div></li>' +val.RoomName+'</ul></div><div class="card-footer d-flex flex-row align-items-center justify-content-start"><h5 class="card-title ml-2 text-left">'+val.RefNo+'</h5><a href="https://ibomwaterfallsuites.com/" class="btn btn-info btn-sm text-right ml-auto">Check-In </a></div></div></div>');
+                            _cardBody.append('<div class="col-md-3"><div class="card"><div class="card-body"><ul><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_price ml-auto">'+val.AccountName.toUpperCase().bold()+ '</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Check-In</div><div class="cart_total_price ml-auto">'+val.CheckIn+'</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Check-Out</div><div class="cart_total_price ml-auto">'+val.CheckOut+ '</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Room Name</div><div class="cart_total_price ml-auto">'+val.RoomName+'</div></li><li class="d-flex flex-row align-items-center justify-content-start"><div class="cart_total_title">Balance</div><div class="cart_total_price ml-auto">&#8358;'+val.Balance+'</div></li></ul></div><div class="card-footer d-flex flex-row align-items-center justify-content-start"><h5 class="cart_total_price ml-2 text-left">'+val.RefNo.toUpperCase().bold()+'</h5><a href="https://ibomwaterfallsuites.com/" class="btn btn-info btn-sm ml-auto">Check-In </a></div></div></div>');
 
                             /*
 
@@ -391,7 +391,7 @@
                                 </li>
                                 <li class="nav-item">
 
-                                    <a  id="btn2" class="nav-link ml-2 btn btn-md border border-dark" data-bs-toggle="pill" href="rooms.html?id=executive" role="tab" aria-controls="pills-Restaurant-sale" aria-selected="false">
+                                    <a  id="btn2" class="nav-link ml-2 btn btn-md text-muted border border-dark" data-bs-toggle="pill" href="rooms.html?id=executive" role="tab" aria-controls="pills-Restaurant-sale" aria-selected="false">
 
 
                                         <div class="row">
