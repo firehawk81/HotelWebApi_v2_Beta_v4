@@ -153,6 +153,7 @@ namespace HotelWebApi_v2.Models
             try {
                 using (SqlConnection con = new SqlConnection()) {
                     con.ConnectionString = "Data Source =.\\MSSQLSERVER2012;Initial Catalog=Ibomwater_db;User ID=Ibom_user;Password=@Down1234#;Integrated Security=False";
+                    //
                     //Properties.Settings.Default.ConnectionStr;
 
                     using (SqlCommand cmd = new SqlCommand()) {
@@ -166,13 +167,16 @@ namespace HotelWebApi_v2.Models
                             reader.Read();
                             if (reader.HasRows) {
                                 
+                                room.AccountName = reader["AccountName"].ToString();
+                                room.Balance = Convert.ToDecimal(reader["Balance"]);
+
                                 room.CheckIn = reader["CheckIn"].ToString();
                                 room.CheckOut = reader["CheckOut"].ToString();
                                 room.CheckedIn = (bool)reader["CheckedIn"];
                                 room.Booked = (bool)reader["Booked"];
 
                                 room.RoomName = reader["RoomName"].ToString();
-                                room.RoomNumber = reader["RoomNumber"].ToString();
+                                //room.RoomNumber = reader["RoomNumber"].ToString();
                                 room.CategoryName = reader["CategoryName"].ToString();
                                 room.RefNo = reader["RefNo"].ToString();
                                 room.Booked = Convert.ToBoolean(reader["Booked"]);
