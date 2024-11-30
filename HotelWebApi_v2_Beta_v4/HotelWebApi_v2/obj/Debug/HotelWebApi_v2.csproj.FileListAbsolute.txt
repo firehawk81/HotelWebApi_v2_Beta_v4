@@ -243,3 +243,4 @@ C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomWaterfall_v1_Beta_2\HotelWebApi_v2_
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomWaterfall_v1_Beta_2\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\bin\Microsoft.AI.Web.xml
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomWaterfall_v1_Beta_2\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\obj\Debug\HotelWebApi_v2.dll
 C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomWaterfall_v1_Beta_2\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\obj\Debug\HotelWebApi_v2.pdb
+C:\Users\ADMIN\OneDrive\Documents\GitHub\IbomWaterfall_v1_Beta_2\HotelWebApi_v2_Beta_v4\HotelWebApi_v2_Beta_v4\HotelWebApi_v2\obj\Debug\HotelWebApi_v2.csprojResolveAssemblyReference.cache

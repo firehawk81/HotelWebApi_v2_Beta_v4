@@ -43,8 +43,8 @@ namespace HotelWebApi_v2.Models
             Rooms room;
             try {
                 using (SqlConnection con = new SqlConnection()) {
-                    con.ConnectionString = Properties.Settings.Default.ConnectionStr;
-                    //"Data Source =.\\MSSQLSERVER2012;Initial Catalog=Ibomwater_db;User ID=Ibom_user;Password=@Down1234#;Integrated Security=False";
+                    con.ConnectionString = "Data Source =.\\MSSQLSERVER2012;Initial Catalog=Ibomwater_db;User ID=Ibom_user;Password=@Down1234#;Integrated Security=False";
+                    //Properties.Settings.Default.ConnectionStr;
 
                     using (SqlCommand cmd = new SqlCommand()) {
                         cmd.Connection = con;
